@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue: #1A5DFF;
+  --color-blue-dark: #1247CC;
+  --color-blue-light: #EBF0FF;
+  --color-gray-bg: #F8FAFC;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #1A5DFF;
+  color: white;
+}
