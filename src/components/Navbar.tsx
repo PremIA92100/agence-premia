@@ -49,17 +49,15 @@ export function Navbar() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href="/" className="group">
               <Image
-                src="/logos/premia-icon-blue.png"
-                alt="Prem'IA"
-                width={36}
-                height={36}
-                className="group-hover:scale-105 transition-transform duration-300"
+                src="/logos/premia-logo-navbar.png"
+                alt="Prem'IA — Agence Digitale IA"
+                width={160}
+                height={40}
+                className="h-9 w-auto group-hover:scale-[1.02] transition-transform duration-300"
+                priority
               />
-              <span className="text-lg font-black tracking-tight text-slate-900">
-                Prem&apos;IA
-              </span>
             </Link>
 
             {/* Desktop links */}

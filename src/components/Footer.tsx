@@ -50,14 +50,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2.5 mb-6">
+            <div className="mb-6">
               <Image
-                src="/logos/premia-icon-blue.png"
-                alt="Prem'IA"
-                width={36}
-                height={36}
+                src="/logos/premia-logo-full.png"
+                alt="Prem'IA — Agence Digitale IA"
+                width={200}
+                height={60}
+                className="h-12 w-auto brightness-0 invert"
               />
-              <span className="text-lg font-black tracking-tight">Prem&apos;IA</span>
             </div>
             <p className="text-slate-400 leading-relaxed max-w-sm mb-8">
               Agence digitale spécialisée en IA et automatisation. 
