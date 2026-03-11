@@ -1,6 +1,7 @@
 "use client";
 
 import { Linkedin, Twitter, Instagram } from "lucide-react";
+import Image from "next/image";
 
 const footerLinks = {
   services: {
@@ -50,9 +51,12 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5 mb-6">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-violet-600">
-                <span className="text-sm font-black text-white">P</span>
-              </div>
+              <Image
+                src="/logos/premia-icon-blue.png"
+                alt="Prem'IA"
+                width={36}
+                height={36}
+              />
               <span className="text-lg font-black tracking-tight">Prem&apos;IA</span>
             </div>
             <p className="text-slate-400 leading-relaxed max-w-sm mb-8">

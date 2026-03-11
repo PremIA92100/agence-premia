@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { label: "Services", href: "#services" },
@@ -48,10 +49,14 @@ export function Navbar() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 shadow-md shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow duration-300">
-                <span className="text-sm font-black text-white">P</span>
-              </div>
+            <Link href="/" className="flex items-center gap-2 group">
+              <Image
+                src="/logos/premia-icon-blue.png"
+                alt="Prem'IA"
+                width={36}
+                height={36}
+                className="group-hover:scale-105 transition-transform duration-300"
+              />
               <span className="text-lg font-black tracking-tight text-slate-900">
                 Prem&apos;IA
               </span>
