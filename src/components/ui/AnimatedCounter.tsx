@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface AnimatedCounterProps {
   value: number;
@@ -13,11 +12,12 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({ value, suffix = "", prefix = "", duration = 2, className = "" }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [count, setCount] = useState(0);
+  const hasAnimated = useRef(false);
 
-  useEffect(() => {
-    if (!isInView) return;
+  const animate = useCallback(() => {
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
 
     const start = 0;
     const end = value;
@@ -27,7 +27,6 @@ export function AnimatedCounter({ value, suffix = "", prefix = "", duration = 2,
     const step = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / durationMs, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(start + (end - start) * eased);
       setCount(current);
@@ -38,17 +37,30 @@ export function AnimatedCounter({ value, suffix = "", prefix = "", duration = 2,
     };
 
     requestAnimationFrame(step);
-  }, [isInView, value, duration]);
+  }, [value, duration]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    // Use native IntersectionObserver — more reliable than framer-motion useInView
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          animate();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [animate]);
 
   return (
-    <motion.span
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
+    <span ref={ref} className={className}>
       {prefix}{count}{suffix}
-    </motion.span>
+    </span>
   );
 }
