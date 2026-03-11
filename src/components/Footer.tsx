@@ -1,7 +1,7 @@
 "use client";
 
 import { Linkedin, Twitter, Instagram } from "lucide-react";
-import Image from "next/image";
+import { Logo } from "./Logo";
 
 const footerLinks = {
   services: {
@@ -51,13 +51,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <Image
-                src="/logos/premia-logo-full.png"
-                alt="Prem'IA — Agence Digitale IA"
-                width={200}
-                height={60}
-                className="h-12 w-auto brightness-0 invert"
-              />
+              <Logo variant="footer" />
             </div>
             <p className="text-slate-400 leading-relaxed max-w-sm mb-8">
               Agence digitale spécialisée en IA et automatisation. 
