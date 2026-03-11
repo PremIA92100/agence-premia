@@ -21,11 +21,11 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: "Les agents IA mis en place gèrent 80% de nos demandes entrantes. Notre équipe peut enfin se concentrer sur les cas complexes au lieu de répondre aux mêmes questions en boucle.",
-    name: "Sophie Martin",
-    role: "CEO",
-    company: "FoodTech Paris",
-    type: "IA & Automatisation",
+    quote: "On avait besoin d'un hub de prospection centralisé avec un CRM taillé pour notre process. Prem'IA a compris le besoin en 1 call et livré un outil qu'on utilise tous les jours. Rien de superflu, que de l'utile.",
+    name: "Équipe Cognectik",
+    role: "Direction",
+    company: "Cognectik",
+    type: "Hub de prospection / CRM sur mesure",
     rating: 5,
   },
 ];

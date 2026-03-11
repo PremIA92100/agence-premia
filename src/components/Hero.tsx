@@ -193,8 +193,7 @@ export function Hero() {
             {[
               { name: "IMH Radio", desc: "Outil interne" },
               { name: "Amourette", desc: "SEO / GEO" },
-              { name: "FoodTech Paris", desc: "Automatisation" },
-              { name: "PropTech Solutions", desc: "Application web" },
+              { name: "Cognectik", desc: "CRM sur mesure" },
             ].map((client) => (
               <div key={client.name} className="group text-center cursor-default">
                 <div className="text-sm font-bold text-slate-400 group-hover:text-slate-700 transition-colors duration-300">
