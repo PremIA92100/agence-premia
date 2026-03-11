@@ -2,35 +2,34 @@
 
 import { SectionReveal, StaggerChildren, StaggerItem } from "../ui/SectionReveal";
 import { AnimatedCounter } from "../ui/AnimatedCounter";
-import { Lightning, CurrencyCircleDollar, Rocket } from "@phosphor-icons/react";
 
 const props = [
   {
-    icon: Lightning,
     value: 5,
     suffix: "x",
     label: "Plus rapide",
     benefit: "Votre projet live en semaines, pas en mois",
     desc: "Pendant que d'autres en sont encore au cahier des charges, votre produit est déjà entre les mains de vos utilisateurs.",
-    color: "from-blue-500 to-cyan-500",
+    accent: "text-blue-600",
+    line: "bg-blue-600",
   },
   {
-    icon: CurrencyCircleDollar,
     value: 3,
     suffix: "x",
     label: "Moins cher",
     benefit: "Budget maîtrisé, ROI immédiat",
     desc: "Chaque euro est investi dans ce qui compte. Pas de feature inutile, pas de réunion à rallonge, que du concret.",
-    color: "from-violet-500 to-purple-500",
+    accent: "text-violet-600",
+    line: "bg-violet-600",
   },
   {
-    icon: Rocket,
     value: 100,
     suffix: "%",
     label: "Autonome",
     benefit: "Vous gardez la main, on vous forme",
     desc: "Pas de dépendance. On vous livre un produit que vous pouvez faire évoluer vous-même, avec formation incluse.",
-    color: "from-emerald-500 to-teal-500",
+    accent: "text-emerald-600",
+    line: "bg-emerald-600",
   },
 ];
 
@@ -52,24 +51,18 @@ export function ValueProps() {
           {props.map((prop) => (
             <StaggerItem key={prop.label}>
               <div className="relative group h-full p-8 rounded-3xl bg-white border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                {/* Background gradient on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${prop.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
-
                 <div className="relative z-10">
-                  {/* Icon + Counter row */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="relative">
-                      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${prop.color} opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500`} />
-                      <div className={`relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${prop.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        <prop.icon size={24} weight="fill" className="text-white" />
-                      </div>
+                  {/* Big number + label */}
+                  <div className="mb-6">
+                    <div className="flex items-baseline gap-2">
+                      <AnimatedCounter
+                        value={prop.value}
+                        suffix={prop.suffix}
+                        className={`text-5xl sm:text-6xl font-black tracking-tighter ${prop.accent}`}
+                      />
+                      <span className="text-base font-semibold text-slate-400 uppercase tracking-wide">{prop.label}</span>
                     </div>
-                    <AnimatedCounter
-                      value={prop.value}
-                      suffix={prop.suffix}
-                      className="text-4xl font-black tracking-tight text-slate-900"
-                    />
-                    <span className="text-lg font-bold text-slate-400">{prop.label}</span>
+                    <div className={`mt-3 h-0.5 w-12 ${prop.line} rounded-full`} />
                   </div>
 
                   {/* Benefit headline */}
@@ -79,8 +72,8 @@ export function ValueProps() {
                   <p className="text-base leading-relaxed text-slate-500">{prop.desc}</p>
                 </div>
 
-                {/* Bottom accent line */}
-                <div className={`absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r ${prop.color} group-hover:w-full transition-all duration-700`} />
+                {/* Bottom accent line on hover */}
+                <div className={`absolute bottom-0 left-0 w-0 h-0.5 ${prop.line} group-hover:w-full transition-all duration-700`} />
               </div>
             </StaggerItem>
           ))}
