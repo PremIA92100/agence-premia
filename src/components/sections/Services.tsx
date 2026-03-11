@@ -11,26 +11,35 @@ const mainServices = [
     description: "Sites performants, SEO-ready, design premium. Du site vitrine à la plateforme complexe, nous donnons vie à votre présence en ligne.",
     icon: <Globe size={28} weight="duotone" className="text-white" />,
     tags: ["Next.js", "Webflow", "WordPress", "SEO"],
+    gradient: "from-blue-500 to-cyan-400",
+    shadow: "shadow-blue-500/25",
+    glow: "group-hover:shadow-blue-500/40",
   },
   {
     title: "Développement d'Applications",
     description: "Apps métier sur-mesure, dashboards, portails clients. Des solutions robustes qui simplifient votre quotidien.",
     icon: <DeviceMobile size={28} weight="duotone" className="text-white" />,
     tags: ["React", "Supabase", "API", "SaaS"],
+    gradient: "from-violet-500 to-purple-400",
+    shadow: "shadow-violet-500/25",
+    glow: "group-hover:shadow-violet-500/40",
   },
   {
     title: "IA & Automatisation",
     description: "Agents IA, workflows automatisés, intégrations sur-mesure. Libérez vos équipes des tâches répétitives.",
     icon: <Lightning size={28} weight="duotone" className="text-white" />,
     tags: ["OpenAI", "n8n", "Make", "Agents IA"],
+    gradient: "from-amber-500 to-orange-400",
+    shadow: "shadow-amber-500/25",
+    glow: "group-hover:shadow-amber-500/40",
   },
 ];
 
 const secondaryServices = [
-  { title: "Audit Technique", icon: MagnifyingGlass, desc: "Analyse, recommandations, roadmap" },
-  { title: "Webdesign UX/UI", icon: PaintBrush, desc: "Identité visuelle, maquettes, prototypes" },
-  { title: "SEO & Growth", icon: ChartLineUp, desc: "Référencement, acquisition, analytics" },
-  { title: "Maintenance & Support", icon: Wrench, desc: "Hébergement, monitoring, évolutions" },
+  { title: "Audit Technique", icon: MagnifyingGlass, desc: "Analyse, recommandations, roadmap", color: "from-emerald-500 to-teal-400" },
+  { title: "Webdesign UX/UI", icon: PaintBrush, desc: "Identité visuelle, maquettes, prototypes", color: "from-pink-500 to-rose-400" },
+  { title: "SEO & Growth", icon: ChartLineUp, desc: "Référencement, acquisition, analytics", color: "from-indigo-500 to-blue-400" },
+  { title: "Maintenance & Support", icon: Wrench, desc: "Hébergement, monitoring, évolutions", color: "from-slate-600 to-slate-400" },
 ];
 
 export function Services() {
@@ -60,6 +69,9 @@ export function Services() {
                 tags={service.tags}
                 index={i}
                 large={i === 0}
+                gradient={service.gradient}
+                shadow={service.shadow}
+                glow={service.glow}
               />
             ))}
           </div>
@@ -87,8 +99,8 @@ export function Services() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-violet-600 transition-all duration-300">
-                  <service.icon size={20} weight="duotone" className="text-slate-400 group-hover:text-white transition-colors duration-300" />
+                <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${service.color} shadow-sm`}>
+                  <service.icon size={20} weight="duotone" className="text-white" />
                 </div>
                 <div className="min-w-0">
                   <div className="font-semibold text-slate-900 text-sm group-hover:text-blue-600 transition-colors duration-300">

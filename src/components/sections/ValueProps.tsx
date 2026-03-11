@@ -58,8 +58,11 @@ export function ValueProps() {
                 <div className="relative z-10">
                   {/* Icon + Counter row */}
                   <div className="flex items-center gap-4 mb-6">
-                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${prop.color} shadow-lg`}>
-                      <prop.icon size={24} weight="fill" className="text-white" />
+                    <div className="relative">
+                      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${prop.color} opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500`} />
+                      <div className={`relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${prop.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <prop.icon size={24} weight="fill" className="text-white" />
+                      </div>
                     </div>
                     <AnimatedCounter
                       value={prop.value}

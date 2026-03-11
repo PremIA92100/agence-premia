@@ -10,9 +10,12 @@ interface ServiceCardProps {
   tags?: string[];
   index?: number;
   large?: boolean;
+  gradient?: string;
+  shadow?: string;
+  glow?: string;
 }
 
-export function ServiceCard({ title, description, icon, tags = [], index = 0, large = false }: ServiceCardProps) {
+export function ServiceCard({ title, description, icon, tags = [], index = 0, large = false, gradient = "from-blue-500 to-violet-600", shadow = "shadow-blue-500/20", glow = "group-hover:shadow-blue-500/40" }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -36,13 +39,17 @@ export function ServiceCard({ title, description, icon, tags = [], index = 0, la
       className={`spotlight-card group relative rounded-3xl border border-slate-200 bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer ${large ? "min-h-[320px]" : ""}`}
     >
       <div className="relative z-10">
-        {/* Icon */}
-        <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-violet-600 shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 group-hover:scale-110 transition-all duration-300">
-          {icon}
+        {/* Icon with colored gradient + glow */}
+        <div className="mb-6 relative">
+          {/* Glow effect behind icon */}
+          <div className={`absolute inset-0 h-14 w-14 rounded-2xl bg-gradient-to-br ${gradient} opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500`} />
+          <div className={`relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} shadow-lg ${shadow} ${glow} group-hover:scale-110 transition-all duration-300`}>
+            {icon}
+          </div>
         </div>
 
         {/* Title */}
-        <h3 className={`font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 ${large ? "text-2xl" : "text-xl"}`}>
+        <h3 className={`font-bold text-slate-900 mb-3 group-hover:text-slate-800 transition-colors duration-300 ${large ? "text-2xl" : "text-xl"}`}>
           {title}
         </h3>
 

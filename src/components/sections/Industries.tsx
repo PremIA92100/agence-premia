@@ -38,8 +38,11 @@ export function Industries() {
           {industries.map((industry) => (
             <StaggerItem key={industry.name}>
               <div className="group relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 cursor-default text-center">
-                <div className={`mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${industry.color} shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300`}>
-                  <industry.icon size={24} weight="fill" className="text-white" />
+                <div className="relative mx-auto mb-4 w-12 h-12">
+                  <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${industry.color} opacity-40 blur-lg group-hover:opacity-60 transition-opacity duration-500`} />
+                  <div className={`relative inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${industry.color} shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                    <industry.icon size={24} weight="fill" className="text-white" />
+                  </div>
                 </div>
                 <div className="text-sm font-semibold text-white/80 group-hover:text-white transition-colors duration-300">
                   {industry.name}
