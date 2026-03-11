@@ -2,77 +2,82 @@
 
 import { SectionReveal, StaggerChildren, StaggerItem } from "../ui/SectionReveal";
 import { AnimatedCounter } from "../ui/AnimatedCounter";
-import { Zap, PiggyBank, UserCheck } from "lucide-react";
+import { Clock, TrendingDown, Sparkles } from "lucide-react";
 
 const props = [
   {
-    icon: Zap,
+    icon: Clock,
     value: 5,
     suffix: "x",
     label: "Plus rapide",
-    desc: "On livre en jours, pas en mois. L'IA accélère chaque étape du développement.",
+    benefit: "Votre projet live en semaines, pas en mois",
+    desc: "Pendant que d'autres en sont encore au cahier des charges, votre produit est déjà entre les mains de vos utilisateurs.",
     color: "from-blue-500 to-cyan-500",
-    bgColor: "bg-blue-50",
   },
   {
-    icon: PiggyBank,
+    icon: TrendingDown,
     value: 3,
     suffix: "x",
     label: "Moins cher",
-    desc: "Automatisation = moins de temps = budget optimisé. Chaque euro investi compte.",
+    benefit: "Budget maîtrisé, ROI immédiat",
+    desc: "Chaque euro est investi dans ce qui compte. Pas de feature inutile, pas de réunion à rallonge, que du concret.",
     color: "from-violet-500 to-purple-500",
-    bgColor: "bg-violet-50",
   },
   {
-    icon: UserCheck,
+    icon: Sparkles,
     value: 100,
     suffix: "%",
     label: "Autonome",
-    desc: "Formation incluse. Vous gardez le contrôle total sur votre produit au quotidien.",
+    benefit: "Vous gardez la main, on vous forme",
+    desc: "Pas de dépendance. On vous livre un produit que vous pouvez faire évoluer vous-même, avec formation incluse.",
     color: "from-emerald-500 to-teal-500",
-    bgColor: "bg-emerald-50",
   },
 ];
 
 export function ValueProps() {
   return (
-    <section className="py-32 bg-white relative">
+    <section className="py-28 bg-white relative">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionReveal className="text-center mb-20">
+          <p className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Pourquoi nous</p>
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900">
-            Pourquoi choisir Prem&apos;IA ?
+            Ce que ça change <span className="gradient-text">pour vous</span>
           </h2>
-          <p className="mt-6 text-xl text-slate-500 max-w-2xl mx-auto">
-            Rapidité, économies et autonomie. Les trois piliers de notre approche.
+          <p className="mt-6 text-lg text-slate-500 max-w-2xl mx-auto">
+            Pas des promesses. Des résultats concrets, mesurables, dès la première semaine.
           </p>
         </SectionReveal>
 
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.15}>
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
           {props.map((prop) => (
             <StaggerItem key={prop.label}>
-              <div className="relative group text-center p-10 rounded-3xl bg-white border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500">
-                {/* Icon */}
-                <div className={`mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${prop.color} shadow-lg`}>
-                  <prop.icon className="h-8 w-8 text-white" />
+              <div className="relative group h-full p-8 rounded-3xl bg-white border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                {/* Background gradient on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${prop.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
+
+                <div className="relative z-10">
+                  {/* Icon + Counter row */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${prop.color} shadow-lg`}>
+                      <prop.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <AnimatedCounter
+                      value={prop.value}
+                      suffix={prop.suffix}
+                      className="text-4xl font-black tracking-tight text-slate-900"
+                    />
+                    <span className="text-lg font-bold text-slate-400">{prop.label}</span>
+                  </div>
+
+                  {/* Benefit headline */}
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{prop.benefit}</h3>
+
+                  {/* Description */}
+                  <p className="text-base leading-relaxed text-slate-500">{prop.desc}</p>
                 </div>
 
-                {/* Counter */}
-                <div className="mb-2">
-                  <AnimatedCounter
-                    value={prop.value}
-                    suffix={prop.suffix}
-                    className="text-6xl font-black tracking-tight text-slate-900"
-                  />
-                </div>
-                <div className="text-xl font-bold text-slate-900 mb-4">{prop.label}</div>
-
-                {/* Description */}
-                <p className="text-base leading-relaxed text-slate-500">
-                  {prop.desc}
-                </p>
-
-                {/* Hover gradient line */}
-                <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-gradient-to-r ${prop.color} rounded-full group-hover:w-1/2 transition-all duration-500`} />
+                {/* Bottom accent line */}
+                <div className={`absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r ${prop.color} group-hover:w-full transition-all duration-700`} />
               </div>
             </StaggerItem>
           ))}

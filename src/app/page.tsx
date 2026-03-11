@@ -10,7 +10,8 @@ import { Industries } from "@/components/sections/Industries";
 import { Process } from "@/components/sections/Process";
 import { Tools } from "@/components/sections/Tools";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { CTAFinal } from "@/components/sections/CTAFinal";
+import { FAQ } from "@/components/sections/FAQ";
+import { ContactForm } from "@/components/sections/ContactForm";
 
 export default function Home() {
   return (
@@ -24,7 +25,8 @@ export default function Home() {
       <Process />
       <Tools />
       <Testimonials />
-      <CTAFinal />
+      <FAQ />
+      <ContactForm />
       <Footer />
     </div>
   );

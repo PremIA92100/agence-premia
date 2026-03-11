@@ -1,75 +1,88 @@
 "use client";
 
 import { SectionReveal, StaggerChildren, StaggerItem } from "../ui/SectionReveal";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "Prem'IA a transformé notre façon de travailler. En 3 semaines, ils ont automatisé des process qui nous prenaient 20h par semaine. Le ROI est immédiat.",
+    quote: "Prem'IA a développé notre outil interne de gestion en un temps record. L'équipe est réactive, comprend les enjeux métier et livre du concret. On a enfin un outil qui nous ressemble.",
+    name: "Axel Cohen",
+    role: "Directeur",
+    company: "IMH Radio Herblay",
+    type: "Outil interne de gestion",
+    rating: 5,
+  },
+  {
+    quote: "La refonte SEO/GEO de notre site a complètement changé notre visibilité en ligne. On attire maintenant une clientèle internationale qu'on ne touchait pas avant. Approche technique et pragmatique.",
+    name: "Paul Poirier",
+    role: "Propriétaire",
+    company: "Restaurant Amourette",
+    type: "Prestation SEO / GEO",
+    rating: 5,
+  },
+  {
+    quote: "Les agents IA mis en place gèrent 80% de nos demandes entrantes. Notre équipe peut enfin se concentrer sur les cas complexes au lieu de répondre aux mêmes questions en boucle.",
     name: "Sophie Martin",
     role: "CEO",
     company: "FoodTech Paris",
-    rating: 5,
-  },
-  {
-    quote: "Une équipe réactive, pragmatique, qui comprend les enjeux business. Notre application est live en 6 semaines, un record pour notre industrie.",
-    name: "Thomas Durand",
-    role: "Fondateur",
-    company: "PropTech Solutions",
-    rating: 5,
-  },
-  {
-    quote: "Les agents IA développés par Prem'IA gèrent maintenant 80% de nos demandes clients. Notre équipe peut enfin se concentrer sur les cas complexes.",
-    name: "Marie Chen",
-    role: "Directrice Opérations",
-    company: "HealthStart",
+    type: "IA & Automatisation",
     rating: 5,
   },
 ];
 
 export function Testimonials() {
   return (
-    <section id="temoignages" className="py-32 bg-white relative overflow-hidden">
+    <section id="temoignages" className="py-28 bg-white relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionReveal className="text-center mb-20">
+          <p className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-4">Témoignages</p>
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900">
-            Notre plus belle fierté,<br />
-            <span className="gradient-text">c&apos;est votre réussite !</span>
+            Ce qu&apos;ils disent<br />
+            <span className="gradient-text">de nous</span>
           </h2>
         </SectionReveal>
 
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerDelay={0.15}>
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
           {testimonials.map((t) => (
             <StaggerItem key={t.name}>
-              <div className="group relative h-full p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500">
-                {/* Quote mark */}
-                <div className="text-6xl font-black text-slate-100 leading-none mb-4 select-none">&ldquo;</div>
+              <div className="group relative h-full flex flex-col p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
+                {/* Background accent */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/5 to-violet-500/5 rounded-bl-[100px] transition-all duration-500 group-hover:w-40 group-hover:h-40" />
 
-                {/* Stars */}
-                <div className="flex gap-1 mb-6">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Quote icon */}
+                  <Quote className="h-8 w-8 text-blue-100 mb-4" />
 
-                {/* Quote */}
-                <p className="text-base leading-relaxed text-slate-600 mb-8">
-                  {t.quote}
-                </p>
-
-                {/* Author */}
-                <div className="mt-auto flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-white font-bold text-sm">
-                    {t.name.split(" ").map((n) => n[0]).join("")}
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-5">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    ))}
                   </div>
-                  <div>
-                    <div className="font-bold text-slate-900 text-sm">{t.name}</div>
-                    <div className="text-xs text-slate-400">{t.role}, {t.company}</div>
+
+                  {/* Quote */}
+                  <p className="text-base leading-relaxed text-slate-600 mb-8 flex-grow">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+
+                  {/* Project type tag */}
+                  <div className="mb-5">
+                    <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600 ring-1 ring-blue-100">
+                      {t.type}
+                    </span>
+                  </div>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-4 pt-5 border-t border-slate-50">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-white font-bold text-sm shadow-md">
+                      {t.name.split(" ").map((n) => n[0]).join("")}
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900 text-sm">{t.name}</div>
+                      <div className="text-xs text-slate-400">{t.role} · {t.company}</div>
+                    </div>
                   </div>
                 </div>
-
-                {/* Hover gradient border effect */}
-                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none gradient-border" />
               </div>
             </StaggerItem>
           ))}
