@@ -1,17 +1,17 @@
 "use client";
 
 import { SectionReveal, StaggerChildren, StaggerItem } from "../ui/SectionReveal";
-import { Shield, Eye, Link2, BookOpen, Repeat, MessageSquare, Users, Target } from "lucide-react";
+import { Shield, Eye, Link as LinkIcon, BookOpen, ArrowsClockwise, ChatText, Users, Target } from "@phosphor-icons/react";
 
 const autonomy = [
   { icon: Eye, text: "Éditez facilement via une interface visuelle" },
-  { icon: Link2, text: "Interconnexions avec vos outils existants" },
+  { icon: LinkIcon, text: "Interconnexions avec vos outils existants" },
   { icon: BookOpen, text: "Documentation & formation des équipes" },
-  { icon: Repeat, text: "Itérations fluides et quotidiennes" },
+  { icon: ArrowsClockwise, text: "Itérations fluides et quotidiennes" },
 ];
 
 const investment = [
-  { icon: MessageSquare, text: "Zéro bullshit, zéro charabia technique" },
+  { icon: ChatText, text: "Zéro bullshit, zéro charabia technique" },
   { icon: Users, text: "Équipe pluridisciplinaire, dédiée à votre projet" },
   { icon: Target, text: "Culture pragmatique, orientée résultats" },
 ];
@@ -35,7 +35,7 @@ export function ProblemSolution() {
             <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl" />
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-sm font-semibold text-blue-700 mb-6">
-                <Shield className="h-4 w-4" />
+                <Shield size={16} weight="bold" />
                 Autonomie
               </div>
               <h3 className="text-2xl font-black text-slate-900 mb-8">
@@ -46,7 +46,7 @@ export function ProblemSolution() {
                   <StaggerItem key={item.text}>
                     <div className="flex items-center gap-4">
                       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white shadow-sm border border-blue-100">
-                        <item.icon className="h-5 w-5 text-blue-600" />
+                        <item.icon size={20} weight="duotone" className="text-blue-600" />
                       </div>
                       <span className="text-base font-medium text-slate-700">{item.text}</span>
                     </div>
@@ -61,7 +61,7 @@ export function ProblemSolution() {
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-emerald-500/5 rounded-full blur-3xl" />
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-semibold text-emerald-700 mb-6">
-                <Target className="h-4 w-4" />
+                <Target size={16} weight="bold" />
                 Investissements
               </div>
               <h3 className="text-2xl font-black text-slate-900 mb-8">
@@ -72,7 +72,7 @@ export function ProblemSolution() {
                   <StaggerItem key={item.text}>
                     <div className="flex items-center gap-4">
                       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white shadow-sm border border-emerald-100">
-                        <item.icon className="h-5 w-5 text-emerald-600" />
+                        <item.icon size={20} weight="duotone" className="text-emerald-600" />
                       </div>
                       <span className="text-base font-medium text-slate-700">{item.text}</span>
                     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { SectionReveal, StaggerChildren, StaggerItem } from "../ui/SectionReveal";
-import { Star, Quote } from "lucide-react";
+import { Star, Quotes } from "@phosphor-icons/react";
 
 const testimonials = [
   {
@@ -51,12 +51,12 @@ export function Testimonials() {
 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Quote icon */}
-                  <Quote className="h-8 w-8 text-blue-100 mb-4" />
+                  <Quotes size={32} weight="fill" className="text-blue-100 mb-4" />
 
                   {/* Stars */}
                   <div className="flex gap-0.5 mb-5">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                      <Star key={i} size={16} weight="fill" className="text-amber-400" />
                     ))}
                   </div>
 

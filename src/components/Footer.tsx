@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Twitter, Instagram } from "lucide-react";
+import { LinkedinLogo, XLogo, InstagramLogo } from "@phosphor-icons/react";
 import { Logo } from "./Logo";
 
 const footerLinks = {
@@ -17,27 +17,24 @@ const footerLinks = {
   entreprise: {
     title: "Entreprise",
     links: [
-      { label: "À propos", href: "#" },
       { label: "Réalisations", href: "#temoignages" },
-      { label: "Blog", href: "#" },
-      { label: "Carrières", href: "#" },
+      { label: "Notre process", href: "#process" },
+      { label: "FAQ", href: "#faq" },
     ],
   },
   ressources: {
     title: "Ressources",
     links: [
       { label: "Contact", href: "#contact" },
-      { label: "Mentions légales", href: "#" },
-      { label: "CGV", href: "#" },
-      { label: "Politique de confidentialité", href: "#" },
+      { label: "Nos outils", href: "#outils" },
     ],
   },
 };
 
 const socials = [
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "X (Twitter)" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: LinkedinLogo, href: "https://www.linkedin.com/company/premia-agence/", label: "LinkedIn" },
+  { icon: XLogo, href: "https://twitter.com", label: "X" },
+  { icon: InstagramLogo, href: "https://www.instagram.com/premia.agence/", label: "Instagram" },
 ];
 
 export function Footer() {
@@ -67,7 +64,7 @@ export function Footer() {
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon className="h-4 w-4" />
+                  <social.icon size={16} weight="regular" />
                 </a>
               ))}
             </div>

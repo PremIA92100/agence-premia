@@ -3,14 +3,14 @@
 import { SectionReveal, StaggerChildren, StaggerItem } from "../ui/SectionReveal";
 import { AnimatedCounter } from "../ui/AnimatedCounter";
 import { GradientMeshDark } from "../ui/GradientMesh";
-import { UtensilsCrossed, ShoppingBag, Heart, Code2, Building2, Megaphone } from "lucide-react";
+import { ForkKnife, ShoppingBag, Heart, Code, Buildings, Megaphone } from "@phosphor-icons/react";
 
 const industries = [
-  { name: "Restauration & Food", icon: UtensilsCrossed, color: "from-orange-400 to-red-500" },
+  { name: "Restauration & Food", icon: ForkKnife, color: "from-orange-400 to-red-500" },
   { name: "Retail & E-commerce", icon: ShoppingBag, color: "from-pink-400 to-rose-500" },
   { name: "Santé & Bien-être", icon: Heart, color: "from-emerald-400 to-teal-500" },
-  { name: "SaaS & Tech", icon: Code2, color: "from-blue-400 to-indigo-500" },
-  { name: "Immobilier & BTP", icon: Building2, color: "from-amber-400 to-orange-500" },
+  { name: "SaaS & Tech", icon: Code, color: "from-blue-400 to-indigo-500" },
+  { name: "Immobilier & BTP", icon: Buildings, color: "from-amber-400 to-orange-500" },
   { name: "Marketing & Com", icon: Megaphone, color: "from-violet-400 to-purple-500" },
 ];
 
@@ -39,7 +39,7 @@ export function Industries() {
             <StaggerItem key={industry.name}>
               <div className="group relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 cursor-default text-center">
                 <div className={`mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${industry.color} shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300`}>
-                  <industry.icon className="h-6 w-6 text-white" />
+                  <industry.icon size={24} weight="fill" className="text-white" />
                 </div>
                 <div className="text-sm font-semibold text-white/80 group-hover:text-white transition-colors duration-300">
                   {industry.name}

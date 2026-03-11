@@ -2,34 +2,34 @@
 
 import { SectionReveal } from "../ui/SectionReveal";
 import { ServiceCard } from "../ui/ServiceCard";
-import { Globe, Smartphone, Zap, Search, Palette, BarChart3, Wrench } from "lucide-react";
+import { Globe, DeviceMobile, Lightning, MagnifyingGlass, PaintBrush, ChartLineUp, Wrench } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 
 const mainServices = [
   {
     title: "Développement de Sites Web",
     description: "Sites performants, SEO-ready, design premium. Du site vitrine à la plateforme complexe, nous donnons vie à votre présence en ligne.",
-    icon: <Globe className="h-7 w-7 text-white" />,
+    icon: <Globe size={28} weight="duotone" className="text-white" />,
     tags: ["Next.js", "Webflow", "WordPress", "SEO"],
   },
   {
     title: "Développement d'Applications",
     description: "Apps métier sur-mesure, dashboards, portails clients. Des solutions robustes qui simplifient votre quotidien.",
-    icon: <Smartphone className="h-7 w-7 text-white" />,
+    icon: <DeviceMobile size={28} weight="duotone" className="text-white" />,
     tags: ["React", "Supabase", "API", "SaaS"],
   },
   {
     title: "IA & Automatisation",
     description: "Agents IA, workflows automatisés, intégrations sur-mesure. Libérez vos équipes des tâches répétitives.",
-    icon: <Zap className="h-7 w-7 text-white" />,
+    icon: <Lightning size={28} weight="duotone" className="text-white" />,
     tags: ["OpenAI", "n8n", "Make", "Agents IA"],
   },
 ];
 
 const secondaryServices = [
-  { title: "Audit Technique", icon: Search, desc: "Analyse, recommandations, roadmap" },
-  { title: "Webdesign UX/UI", icon: Palette, desc: "Identité visuelle, maquettes, prototypes" },
-  { title: "SEO & Growth", icon: BarChart3, desc: "Référencement, acquisition, analytics" },
+  { title: "Audit Technique", icon: MagnifyingGlass, desc: "Analyse, recommandations, roadmap" },
+  { title: "Webdesign UX/UI", icon: PaintBrush, desc: "Identité visuelle, maquettes, prototypes" },
+  { title: "SEO & Growth", icon: ChartLineUp, desc: "Référencement, acquisition, analytics" },
   { title: "Maintenance & Support", icon: Wrench, desc: "Hébergement, monitoring, évolutions" },
 ];
 
@@ -88,7 +88,7 @@ export function Services() {
                 className="group flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-violet-600 transition-all duration-300">
-                  <service.icon className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors duration-300" />
+                  <service.icon size={20} weight="duotone" className="text-slate-400 group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div className="min-w-0">
                   <div className="font-semibold text-slate-900 text-sm group-hover:text-blue-600 transition-colors duration-300">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Compass, Rocket, TrendingUp, Zap } from "lucide-react";
+import { Compass, RocketLaunch, TrendUp, Lightning } from "@phosphor-icons/react";
 
 const steps = [
   {
@@ -18,7 +18,7 @@ const steps = [
   {
     id: "mvp",
     label: "MVP",
-    icon: Rocket,
+    icon: RocketLaunch,
     color: "from-violet-500 to-purple-500",
     title: "Lancez rapidement un produit qui claque",
     description:
@@ -28,7 +28,7 @@ const steps = [
   {
     id: "scale",
     label: "Scale",
-    icon: TrendingUp,
+    icon: TrendUp,
     color: "from-emerald-500 to-teal-500",
     title: "Déployez votre produit à grande échelle",
     description:
@@ -38,7 +38,7 @@ const steps = [
   {
     id: "automatisation",
     label: "Automatisation",
-    icon: Zap,
+    icon: Lightning,
     color: "from-amber-500 to-orange-500",
     title: "Automatisez vos processus métiers",
     description:
@@ -65,7 +65,7 @@ export function ProcessTabs() {
                 : "bg-white text-slate-500 border border-slate-200 hover:border-slate-300 hover:text-slate-700"
             }`}
           >
-            <s.icon className="h-4 w-4" />
+            <s.icon size={16} weight="bold" />
             {s.label}
             {active === i && (
               <motion.div
@@ -91,7 +91,7 @@ export function ProcessTabs() {
           {/* Text content */}
           <div>
             <div className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${step.color} px-4 py-1.5 text-sm font-semibold text-white mb-6`}>
-              <step.icon className="h-4 w-4" />
+              <step.icon size={16} weight="bold" />
               {step.label}
             </div>
             <h3 className="text-3xl font-black tracking-tight text-slate-900 mb-4">
@@ -117,7 +117,7 @@ export function ProcessTabs() {
           {/* Visual placeholder */}
           <div className={`relative rounded-3xl bg-gradient-to-br ${step.color} p-1`}>
             <div className="rounded-[22px] bg-white p-12 flex items-center justify-center min-h-[300px]">
-              <step.icon className="h-24 w-24 text-slate-200" strokeWidth={1} />
+              <step.icon size={96} weight="thin" className="text-slate-200" />
             </div>
           </div>
         </motion.div>

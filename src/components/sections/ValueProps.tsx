@@ -2,11 +2,11 @@
 
 import { SectionReveal, StaggerChildren, StaggerItem } from "../ui/SectionReveal";
 import { AnimatedCounter } from "../ui/AnimatedCounter";
-import { Clock, TrendingDown, Sparkles } from "lucide-react";
+import { Lightning, CurrencyCircleDollar, Rocket } from "@phosphor-icons/react";
 
 const props = [
   {
-    icon: Clock,
+    icon: Lightning,
     value: 5,
     suffix: "x",
     label: "Plus rapide",
@@ -15,7 +15,7 @@ const props = [
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: TrendingDown,
+    icon: CurrencyCircleDollar,
     value: 3,
     suffix: "x",
     label: "Moins cher",
@@ -24,7 +24,7 @@ const props = [
     color: "from-violet-500 to-purple-500",
   },
   {
-    icon: Sparkles,
+    icon: Rocket,
     value: 100,
     suffix: "%",
     label: "Autonome",
@@ -59,7 +59,7 @@ export function ValueProps() {
                   {/* Icon + Counter row */}
                   <div className="flex items-center gap-4 mb-6">
                     <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${prop.color} shadow-lg`}>
-                      <prop.icon className="h-6 w-6 text-white" />
+                      <prop.icon size={24} weight="fill" className="text-white" />
                     </div>
                     <AnimatedCounter
                       value={prop.value}

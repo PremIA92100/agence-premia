@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { SectionReveal } from "../ui/SectionReveal";
 import { GradientMeshDark } from "../ui/GradientMesh";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight } from "@phosphor-icons/react";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -66,7 +66,7 @@ export function ContactForm() {
                 "Audit technique offert",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0" />
+                  <CheckCircle size={20} weight="fill" className="text-emerald-400 flex-shrink-0" />
                   <span className="text-base text-white/70">{item}</span>
                 </div>
               ))}
@@ -94,7 +94,7 @@ export function ContactForm() {
                   className="text-center py-12"
                 >
                   <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/20">
-                    <CheckCircle2 className="h-8 w-8 text-emerald-400" />
+                    <CheckCircle size={32} weight="fill" className="text-emerald-400" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-2">Message envoyé !</h3>
                   <p className="text-white/50">On revient vers vous en moins de 24h.</p>
@@ -189,7 +189,7 @@ export function ContactForm() {
                     ) : (
                       <>
                         Envoyer mon message
-                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                        <ArrowRight size={16} weight="bold" className="group-hover:translate-x-1 transition-transform duration-200" />
                       </>
                     )}
                   </button>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { GradientMesh } from "./ui/GradientMesh";
 import { MarqueeLogos } from "./ui/MarqueeLogos";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play } from "@phosphor-icons/react";
 
 const rotatingWords = ["Sites web", "Applications", "Automatisation", "Agents IA"];
 
@@ -100,13 +100,13 @@ export function Hero() {
                 className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 text-base font-bold text-white shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 active:scale-100 transition-all duration-300"
               >
                 Discuter de mon projet
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                <ArrowRight size={16} weight="bold" className="group-hover:translate-x-1 transition-transform duration-200" />
               </a>
               <a
                 href="#realisations"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-4 text-base font-semibold text-slate-600 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300"
               >
-                <Play className="h-4 w-4 fill-slate-400" />
+                <Play size={16} weight="fill" className="text-slate-400" />
                 Voir nos réalisations
               </a>
             </motion.div>

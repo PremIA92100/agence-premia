@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GradientMeshDark } from "../ui/GradientMesh";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react";
 
 export function CTAFinal() {
   return (
@@ -52,7 +52,7 @@ export function CTAFinal() {
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-xl hover:shadow-white/20 hover:scale-105 active:scale-100 transition-all duration-300"
               >
                 Réserver mon appel
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                <ArrowRight size={16} weight="bold" className="group-hover:translate-x-1 transition-transform duration-200" />
               </a>
               <a
                 href="mailto:contact@agence-premia.fr"

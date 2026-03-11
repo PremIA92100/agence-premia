@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "../ui/SectionReveal";
-import { ChevronDown } from "lucide-react";
+import { CaretDown } from "@phosphor-icons/react";
 
 const faqs = [
   {
@@ -58,7 +58,7 @@ function FAQItem({ question, answer, isOpen, onClick }: { question: string; answ
           transition={{ duration: 0.3 }}
           className="flex-shrink-0"
         >
-          <ChevronDown className={`h-5 w-5 transition-colors duration-200 ${isOpen ? "text-blue-600" : "text-slate-400"}`} />
+          <CaretDown size={20} weight="bold" className={`transition-colors duration-200 ${isOpen ? "text-blue-600" : "text-slate-400"}`} />
         </motion.div>
       </button>
       <AnimatePresence>

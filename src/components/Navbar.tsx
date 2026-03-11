@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { List, X, ArrowRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { Logo } from "./Logo";
 
@@ -33,7 +33,7 @@ export function Navbar() {
           </span>
           <span className="text-white/80">Développez vos agents IA sur-mesure</span>
           <a href="#contact" className="inline-flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300 transition-colors">
-            En savoir plus <ArrowRight className="h-3 w-3" />
+            En savoir plus <ArrowRight size={12} weight="bold" />
           </a>
         </div>
       </div>
@@ -78,7 +78,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl hover:bg-slate-100 transition-colors"
               >
-                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {mobileOpen ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
               </button>
             </div>
           </div>
