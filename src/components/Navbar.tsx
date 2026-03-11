@@ -1,126 +1,129 @@
-
 "use client";
 
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-const navItems = [
-    { name: "Fonctionnalités", href: "#features" },
-    { name: "Solutions", href: "#solutions" },
-    { name: "Tarifs", href: "#pricing" },
-    { name: "À propos", href: "#about" },
+const links = [
+  { label: "Services", href: "#services" },
+  { label: "Process", href: "#process" },
+  { label: "Outils", href: "#outils" },
+  { label: "Témoignages", href: "#temoignages" },
 ];
 
 export function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-        <>
-            <nav
-                className={cn(
-                    "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] max-w-5xl rounded-full border border-transparent",
-                    scrolled || isOpen
-                        ? "bg-white/70 backdrop-blur-xl border-white/20 shadow-lg shadow-black/5 py-2"
-                        : "bg-transparent py-4"
-                )}
-            >
-                <div className="px-6">
-                    <div className="flex items-center justify-between">
-                        {/* Logo */}
-                        <div className="flex items-center">
-                            <Link href="/" className="flex items-center gap-2 group">
-                                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:shadow-lg transition-all transform group-hover:rotate-3">
-                                    P
-                                </div>
-                                <span className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-primary transition-colors">
-                                    Prem&apos;IA
-                                </span>
-                            </Link>
-                        </div>
+  return (
+    <>
+      {/* Promo Banner */}
+      <div className="bg-slate-900 text-white py-2.5 px-4 text-center text-sm font-medium relative z-50">
+        <div className="flex items-center justify-center gap-2">
+          <span className="inline-flex items-center rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-bold text-blue-300 ring-1 ring-blue-500/30">
+            NEW
+          </span>
+          <span className="text-white/80">Développez vos agents IA sur-mesure</span>
+          <a href="#contact" className="inline-flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300 transition-colors">
+            En savoir plus <ArrowRight className="h-3 w-3" />
+          </a>
+        </div>
+      </div>
 
-                        {/* Desktop Nav */}
-                        <div className="hidden md:block">
-                            <div className="flex items-center space-x-1">
-                                {navItems.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        href={item.href}
-                                        className="px-4 py-2 rounded-full text-sm font-medium text-slate-600 transition-all hover:text-slate-900 hover:bg-slate-100/50"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
+      {/* Navbar */}
+      <nav
+        className={`sticky top-0 z-40 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 shadow-md shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow duration-300">
+                <span className="text-sm font-black text-white">P</span>
+              </div>
+              <span className="text-lg font-black tracking-tight text-slate-900">
+                Prem&apos;IA
+              </span>
+            </Link>
 
-                        {/* CTA */}
-                        <div className="hidden md:block">
-                            <Link
-                                href="/contact"
-                                className="relative inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2 text-sm font-medium text-white transition-transform hover:scale-105 hover:bg-slate-800 shadow-md"
-                            >
-                                Audit Gratuit
-                            </Link>
-                        </div>
+            {/* Desktop links */}
+            <div className="hidden md:flex items-center gap-8">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
 
-                        {/* Mobile Menu Button */}
-                        <div className="flex md:hidden">
-                            <button
-                                onClick={() => setIsOpen(!isOpen)}
-                                className="inline-flex items-center justify-center rounded-full p-2 text-slate-700 hover:bg-slate-100 focus:outline-none transition-colors"
-                            >
-                                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            {/* CTA + Burger */}
+            <div className="flex items-center gap-4">
+              <a
+                href="#contact"
+                className="hidden sm:inline-flex items-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-slate-900/10 hover:shadow-slate-900/20 hover:scale-105 active:scale-100 transition-all duration-200"
+              >
+                Un projet ?
+              </a>
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl hover:bg-slate-100 transition-colors"
+              >
+                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-            {/* Mobile Menu Overlay */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        className="fixed top-20 left-4 right-4 z-40 md:hidden rounded-2xl bg-white/90 backdrop-blur-2xl border border-white/20 shadow-2xl overflow-hidden"
-                    >
-                        <div className="flex flex-col p-4 space-y-2">
-                            {navItems.map((item) => (
-                                <Link
-                                    key={item.name}
-                                    href={item.href}
-                                    className="block rounded-xl px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {item.name}
-                                </Link>
-                            ))}
-                            <div className="pt-2 border-t border-slate-100 mt-2">
-                                <Link
-                                    href="/contact"
-                                    className="block w-full rounded-xl bg-slate-900 px-4 py-3 text-center text-base font-medium text-white hover:bg-slate-800 shadow-lg"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    Démarrer l&apos;audit
-                                </Link>
-                            </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </>
-    );
+      {/* Mobile overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-30 bg-white/95 backdrop-blur-xl md:hidden"
+          >
+            <div className="flex flex-col items-center justify-center h-full gap-8">
+              {links.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0, transition: { delay: i * 0.1 } }}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-2xl font-bold text-slate-900 hover:text-blue-600 transition-colors"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              <motion.a
+                href="#contact"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.4 } }}
+                onClick={() => setMobileOpen(false)}
+                className="mt-4 inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 text-lg font-bold text-white shadow-xl"
+              >
+                Un projet ?
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
 }

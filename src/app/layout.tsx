@@ -4,23 +4,26 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Prem'IA — Automatisez votre business, libérez votre temps",
+  title: "Prem'IA — Agence digitale IA & Automatisation n°1 en France",
   description:
-    "Prem'IA aide les PME, restaurants et indépendants à automatiser leurs tâches répétitives grâce à l'IA. Gagnez du temps, réduisez les erreurs, développez votre activité.",
+    "Prem'IA crée vos sites web, applications et solutions d'automatisation IA. 5x plus rapide, 3x moins cher. Audit gratuit.",
   keywords: [
-    "automatisation",
+    "agence digitale",
     "IA",
-    "PME",
-    "productivité",
-    "intelligence artificielle",
+    "automatisation",
+    "développement web",
+    "applications",
+    "agents IA",
+    "Next.js",
     "agence",
     "Prem'IA",
+    "Paris",
   ],
   authors: [{ name: "Prem'IA" }],
   openGraph: {
-    title: "Prem'IA — Automatisez votre business, libérez votre temps",
+    title: "Prem'IA — Agence digitale IA & Automatisation",
     description:
-      "Gagnez 10h par semaine grâce à l'automatisation intelligente. Audit gratuit.",
+      "Sites web, applications, IA & automatisation. 5x plus rapide, 3x moins cher. Audit gratuit.",
     url: "https://agence-premia.fr",
     siteName: "Prem'IA",
     locale: "fr_FR",
@@ -28,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prem'IA — Automatisez votre business",
+    title: "Prem'IA — Agence digitale IA & Automatisation",
     description:
-      "Gagnez 10h par semaine grâce à l'automatisation intelligente.",
+      "Sites web, applications, IA & automatisation. 5x plus rapide, 3x moins cher.",
   },
   metadataBase: new URL("https://agence-premia.fr"),
 };
@@ -44,10 +47,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="bg-background text-foreground antialiased selection:bg-primary/10 selection:text-primary">
+      <body className="bg-[#fafafa] text-slate-900 antialiased">
         <SmoothScroll>
-          {/* Global Noise Texture */}
-          <div className="noise-bg" />
           {children}
         </SmoothScroll>
       </body>

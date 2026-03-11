@@ -1,134 +1,124 @@
-
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, Database, Zap, Sparkles, MessageSquare, BarChart3, Globe } from "lucide-react";
-import Link from "next/link";
-import { TextReveal } from "@/components/ui/TextReveal";
+import { useEffect, useState } from "react";
+import { GradientMesh } from "./ui/GradientMesh";
+import { MarqueeLogos } from "./ui/MarqueeLogos";
+import { ArrowRight } from "lucide-react";
 
-const FloatingNode = ({
-    children,
-    delay = 0,
-    x,
-    y,
-}: {
-    children: React.ReactNode;
-    delay?: number;
-    x: number | string;
-    y: number | string;
-}) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay, type: "spring" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-            style={{ x, y }}
-        >
-            <motion.div
-                animate={{
-                    y: [-10, 10, -10],
-                    rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                    delay: delay,
-                }}
-                className="flex items-center justify-center w-16 h-16 rounded-2xl border border-white/40 bg-white/60 shadow-[0_8px_32px_rgba(31,38,135,0.15)] backdrop-blur-xl hover:scale-110 hover:shadow-cyan-500/20 transition-all duration-300"
-            >
-                {children}
-            </motion.div>
-        </motion.div>
-    );
-};
+const rotatingWords = ["Sites web", "Applications", "Automatisation", "Agents IA"];
 
 export function Hero() {
-    return (
-        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white pt-20">
-            {/* Background: Technical Grid */}
-            <div className="absolute inset-0 bg-grid-slate-100 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_100%,transparent_100%)] opacity-80" />
+  const [wordIndex, setWordIndex] = useState(0);
 
-            {/* Background: Massive Animated Blobs */}
-            <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-            <div className="absolute top-0 -right-4 w-96 h-96 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
-            <div className="absolute -bottom-32 left-20 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
-            {/* Orbiting Nodes (Larger & More spread out) */}
-            <div className="absolute inset-0 max-w-[1400px] mx-auto pointer-events-none hidden lg:block">
-                {/* Inner Ring */}
-                <FloatingNode x="-300px" y="-120px" delay={0.2}>
-                    <Zap className="h-8 w-8 text-amber-500" />
-                </FloatingNode>
-                <FloatingNode x="320px" y="140px" delay={0.5}>
-                    <Database className="h-8 w-8 text-blue-500" />
-                </FloatingNode>
+  return (
+    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden">
+      <GradientMesh />
 
-                {/* Outer Ring */}
-                <FloatingNode x="-450px" y="180px" delay={0.8}>
-                    <Bot className="h-8 w-8 text-purple-600" />
-                </FloatingNode>
-                <FloatingNode x="480px" y="-150px" delay={1.1}>
-                    <MessageSquare className="h-8 w-8 text-green-500" />
-                </FloatingNode>
-                <FloatingNode x="0px" y="-320px" delay={1.4}>
-                    <BarChart3 className="h-8 w-8 text-rose-500" />
-                </FloatingNode>
-                <FloatingNode x="0px" y="320px" delay={1.7}>
-                    <Globe className="h-8 w-8 text-cyan-500" />
-                </FloatingNode>
-            </div>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8"
+          >
+            <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-semibold text-blue-600 shadow-sm">
+              Agence digitale IA n°1 en France
+            </span>
+          </motion.div>
 
-            <div className="relative z-10 max-w-5xl px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                    <div className="mx-auto mb-8 flex w-fit items-center gap-2 rounded-full border border-blue-100 bg-blue-50/50 px-4 py-1.5 backdrop-blur-md shadow-sm">
-                        <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-                        <span className="text-sm font-bold uppercase tracking-widest text-primary">
-                            Agence IA Next-Gen
-                        </span>
-                    </div>
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 leading-[1.1]"
+          >
+            Créons ensemble vos{" "}
+            <span className="relative inline-block">
+              <motion.span
+                key={wordIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="gradient-text"
+              >
+                {rotatingWords[wordIndex]}
+              </motion.span>
+              {/* Underline decoration */}
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                <motion.path
+                  d="M2 8C50 2 150 2 198 8"
+                  stroke="url(#gradient)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                />
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#8b5cf6" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+          </motion.h1>
 
-                    <h1 className="mb-8 text-6xl font-black tracking-tight text-slate-900 sm:text-8xl">
-                        <TextReveal text="Automatisez." className="block" delay={0.2} />
-                        <span className="text-gradient">
-                            <TextReveal text="Dominez." delay={0.8} />
-                        </span>
-                    </h1>
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-8 text-xl lg:text-2xl text-slate-500 leading-relaxed max-w-2xl mx-auto"
+          >
+            Nous créons des produits digitaux qui scalent, en un temps record. 
+            Avec vos équipes tech ou non tech.
+          </motion.p>
 
-                    <p className="mx-auto mb-10 max-w-2xl text-xl text-slate-600 sm:text-2xl leading-relaxed font-medium">
-                        Transformez votre business en machine de guerre.
-                        <br />
-                        <span className="text-slate-400">0% d&apos;effort humain. 100% de croissance.</span>
-                    </p>
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#contact"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 text-base font-bold text-white shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 active:scale-100 transition-all duration-300"
+            >
+              Réserver un appel
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+            </a>
+            <a
+              href="#temoignages"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300"
+            >
+              Voir nos réalisations
+            </a>
+          </motion.div>
+        </div>
+      </div>
 
-                    <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
-                        <Link
-                            href="/contact"
-                            className="group relative flex h-14 items-center gap-3 rounded-full bg-slate-900 px-10 text-lg font-bold text-white shadow-2xl shadow-blue-500/20 transition-all hover:scale-105 hover:bg-slate-800 hover:shadow-blue-500/40"
-                        >
-                            <span className="relative z-10">Lancer l&apos;audit (Gratuit)</span>
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 transition-opacity group-hover:opacity-100 blur-lg" />
-                            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 relative z-10" />
-                        </Link>
-
-                        <Link
-                            href="#solutions"
-                            className="flex h-14 items-center gap-2 rounded-full px-8 text-lg font-bold text-slate-600 transition-colors hover:text-primary hover:bg-slate-50"
-                        >
-                            Voir la démo
-                        </Link>
-                    </div>
-                </motion.div>
-            </div>
-
-            {/* Bottom fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
-        </section>
-    );
+      {/* Marquee logos */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.8 }}
+      >
+        <MarqueeLogos />
+      </motion.div>
+    </section>
+  );
 }

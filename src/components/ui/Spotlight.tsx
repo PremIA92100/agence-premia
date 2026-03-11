@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion, useMotionTemplate, useMotionValue, useSpring, HTMLMotionProps } from "framer-motion";
 
@@ -20,14 +20,14 @@ export function Spotlight({
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    const [isHovering, setIsHovering] = useState(false);
+    const [, setIsHovering] = useState(false);
 
     function handleMouseMove({
         currentTarget,
         clientX,
         clientY,
     }: React.MouseEvent<HTMLDivElement>) {
-        const { left, top, width, height } = currentTarget.getBoundingClientRect();
+        const { left, top } = currentTarget.getBoundingClientRect();
 
         // Spotlight position
         mouseX.set(clientX - left);
@@ -81,7 +81,7 @@ export function Spotlight({
                 "group relative rounded-2xl border border-slate-200 bg-white shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-slate-300",
                 className
             )}
-            {...(props as any)}
+            {...(props as React.ComponentProps<typeof motion.div>)}
         >
             {/* Animated Gradient Border on Hover (Spotlight) */}
             <motion.div
