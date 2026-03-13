@@ -9,8 +9,8 @@ import { Logo } from "./Logo";
 const links = [
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
-  { label: "Outils", href: "#outils" },
-  { label: "Témoignages", href: "#temoignages" },
+  { label: "Clients", href: "#clients" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -25,43 +25,31 @@ export function Navbar() {
 
   return (
     <>
-      {/* Promo Banner */}
-      <div className="bg-slate-900 text-white py-2.5 px-4 text-center text-sm font-medium relative z-50">
-        <div className="flex items-center justify-center gap-2">
-          <span className="inline-flex items-center rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-bold text-blue-300 ring-1 ring-blue-500/30">
-            NEW
-          </span>
-          <span className="text-white/80">Développez vos agents IA sur-mesure</span>
-          <a href="#contact" className="inline-flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300 transition-colors">
-            En savoir plus <ArrowRight size={12} weight="bold" />
-          </a>
-        </div>
-      </div>
-
       {/* Navbar */}
       <nav
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm"
+            ? "bg-[var(--color-bg)]/80 backdrop-blur-xl border-b border-[var(--color-border)]"
             : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-16 lg:h-20 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="group hover:opacity-90 transition-opacity duration-200">
               <Logo variant="navbar" />
             </Link>
 
             {/* Desktop links */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-10">
               {links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors duration-200"
+                  className="text-sm font-medium text-[var(--color-text-dim)] hover:text-white transition-colors duration-200 relative group"
                 >
                   {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-[var(--color-cyan)] group-hover:w-full transition-all duration-300" />
                 </a>
               ))}
             </div>
@@ -70,15 +58,16 @@ export function Navbar() {
             <div className="flex items-center gap-4">
               <a
                 href="#contact"
-                className="hidden sm:inline-flex items-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-slate-900/10 hover:shadow-slate-900/20 hover:scale-105 active:scale-100 transition-all duration-200"
+                className="hidden sm:inline-flex items-center gap-2 rounded-full border border-[var(--color-cyan)]/30 bg-[var(--color-cyan)]/10 px-5 py-2.5 text-sm font-bold text-[var(--color-cyan)] hover:bg-[var(--color-cyan)]/20 hover:border-[var(--color-cyan)]/50 transition-all duration-300"
               >
                 Un projet ?
+                <ArrowRight size={12} weight="bold" />
               </a>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl hover:bg-slate-100 transition-colors"
+                className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--color-border)] hover:border-[var(--color-border-hover)] hover:bg-white/5 transition-all duration-200"
               >
-                {mobileOpen ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
+                {mobileOpen ? <X size={18} weight="bold" className="text-white" /> : <List size={18} weight="bold" className="text-white" />}
               </button>
             </div>
           </div>
@@ -92,17 +81,17 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-30 bg-white/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 bg-[var(--color-bg)]/98 backdrop-blur-2xl md:hidden"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8">
+            <div className="flex flex-col items-center justify-center h-full gap-10">
               {links.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0, transition: { delay: i * 0.1 } }}
+                  animate={{ opacity: 1, y: 0, transition: { delay: i * 0.08 } }}
                   onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-bold text-slate-900 hover:text-blue-600 transition-colors"
+                  className="text-3xl font-black text-white hover:text-[var(--color-cyan)] transition-colors tracking-tight"
                 >
                   {link.label}
                 </motion.a>
@@ -110,11 +99,12 @@ export function Navbar() {
               <motion.a
                 href="#contact"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 0.4 } }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.35 } }}
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 text-lg font-bold text-white shadow-xl"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-[var(--color-cyan)] px-8 py-4 text-lg font-bold text-[var(--color-bg)]"
               >
-                Un projet ?
+                Lancer mon projet
+                <ArrowRight size={18} weight="bold" />
               </motion.a>
             </div>
           </motion.div>

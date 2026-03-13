@@ -51,7 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="bg-[#fafafa] text-slate-900 antialiased">
+      <body className="bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
         <SmoothScroll>
           {children}
         </SmoothScroll>

@@ -3,30 +3,20 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Footer } from "@/components/Footer";
-import { ValueProps } from "@/components/sections/ValueProps";
 import { Services } from "@/components/sections/Services";
-import { ProblemSolution } from "@/components/sections/ProblemSolution";
-import { Industries } from "@/components/sections/Industries";
 import { Process } from "@/components/sections/Process";
-import { Tools } from "@/components/sections/Tools";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { FAQ } from "@/components/sections/FAQ";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { Clients } from "@/components/sections/Clients";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#fafafa] font-sans text-slate-900">
+    <div className="min-h-screen bg-[var(--color-bg)] font-sans text-[var(--color-text)]">
       <Navbar />
       <Hero />
-      <ValueProps />
       <Services />
-      <ProblemSolution />
-      <Industries />
       <Process />
-      <Tools />
-      <Testimonials />
-      <FAQ />
-      <ContactForm />
+      <Clients />
+      <Contact />
       <Footer />
     </div>
   );
