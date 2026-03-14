@@ -9,11 +9,11 @@ const steps = [
   {
     id: "strategie",
     number: "01",
-    label: "Strat\u00e9gie",
+    label: "Stratégie",
     icon: Compass,
     title: "On cartographie votre terrain",
-    description: "On transforme votre id\u00e9e en plan d\u2019action. Priorit\u00e9s, faisabilit\u00e9, roadmap. Pas de bullshit, que du concret.",
-    features: ["\u00c9tude de faisabilit\u00e9", "Audit technologique", "S\u00e9lection des outils", "Strat\u00e9gie produit"],
+    description: "On transforme votre idée en plan d'action. Priorités, faisabilité, roadmap. Pas de bullshit, que du concret.",
+    features: ["Étude de faisabilité", "Audit technologique", "Sélection des outils", "Stratégie produit"],
     duration: "1-2 semaines",
   },
   {
@@ -22,8 +22,8 @@ const steps = [
     label: "Build",
     icon: RocketLaunch,
     title: "On construit vite et bien",
-    description: "Gr\u00e2ce \u00e0 l\u2019IA et aux outils modernes, on livre un produit qui claque en un temps record. It\u00e9rations rapproch\u00e9es.",
-    features: ["Livraison rapide", "It\u00e9rations continues", "Validation de traction", "Retours utilisateurs"],
+    description: "Grâce à l'IA et aux outils modernes, on livre un produit qui claque en un temps record. Itérations rapprochées.",
+    features: ["Livraison rapide", "Itérations continues", "Validation de traction", "Retours utilisateurs"],
     duration: "2-6 semaines",
   },
   {
@@ -31,9 +31,9 @@ const steps = [
     number: "03",
     label: "Scale",
     icon: TrendUp,
-    title: "On fait passer \u00e0 l\u2019\u00e9chelle",
-    description: "Migration, performance, s\u00e9curit\u00e9. On accompagne la croissance de votre produit sans compromis.",
-    features: ["RGPD & conformit\u00e9", "Performances in\u00e9gal\u00e9es", "S\u00e9curit\u00e9 avanc\u00e9e", "Self-Hosting"],
+    title: "On fait passer à l'échelle",
+    description: "Migration, performance, sécurité. On accompagne la croissance de votre produit sans compromis.",
+    features: ["RGPD & conformité", "Performances inégalées", "Sécurité avancée", "Self-Hosting"],
     duration: "Continu",
   },
   {
@@ -41,9 +41,9 @@ const steps = [
     number: "04",
     label: "Automate",
     icon: Lightning,
-    title: "On automatise le r\u00e9p\u00e9titif",
-    description: "Agents IA, workflows, int\u00e9grations. Vos \u00e9quipes se concentrent sur ce qui compte vraiment.",
-    features: ["Agents IA sur-mesure", "Workflows automatis\u00e9s", "Serveurs MCP", "Coaching IA"],
+    title: "On automatise le répétitif",
+    description: "Agents IA, workflows, intégrations. Vos équipes se concentrent sur ce qui compte vraiment.",
+    features: ["Agents IA sur-mesure", "Workflows automatisés", "Serveurs MCP", "Coaching IA"],
     duration: "1-3 semaines",
   },
 ];
@@ -53,56 +53,46 @@ export function Process() {
   const step = steps[active];
 
   return (
-    <section id="process" className="relative py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[var(--color-bg-elevated)]" />
+    <section id="process" className="relative py-32 bg-slate-50 overflow-hidden">
       <div className="absolute inset-0 bg-dots" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <SectionReveal className="mb-20">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-cyan)] mb-4">Notre process</p>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-[1.1]">
-            Quatre \u00e9tapes.<br />
-            <span className="text-[var(--color-text-dim)]">Z\u00e9ro surprise.</span>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-600 mb-4">Notre process</p>
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
+            Quatre étapes.<br />
+            <span className="text-slate-400">Zéro surprise.</span>
           </h2>
         </SectionReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left - Step selector */}
+          {/* Step selector */}
           <div className="lg:col-span-4 space-y-2">
             {steps.map((s, i) => (
               <button
                 key={s.id}
                 onClick={() => setActive(i)}
-                className={`w-full flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 group ${
+                className={`w-full flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 cursor-pointer ${
                   active === i
-                    ? "bg-[var(--color-bg-card)] border border-[var(--color-cyan)]/20"
-                    : "border border-transparent hover:bg-white/[0.02]"
+                    ? "bg-white border border-cyan-200 shadow-md"
+                    : "border border-transparent hover:bg-white/60"
                 }`}
               >
-                <span
-                  className={`text-xs font-black tracking-wider transition-colors duration-300 ${
-                    active === i ? "text-[var(--color-cyan)]" : "text-[var(--color-text-dim)]"
-                  }`}
-                >
+                <span className={`text-xs font-black tracking-wider transition-colors duration-300 ${active === i ? "text-cyan-600" : "text-slate-300"}`}>
                   {s.number}
                 </span>
                 <div className="flex-1">
-                  <div className={`text-sm font-bold transition-colors duration-300 ${active === i ? "text-white" : "text-[var(--color-text-muted)]"}`}>
+                  <div className={`text-sm font-bold transition-colors duration-300 ${active === i ? "text-slate-900" : "text-slate-500"}`}>
                     {s.label}
                   </div>
                 </div>
-                <s.icon
-                  size={18}
-                  weight={active === i ? "fill" : "regular"}
-                  className={`transition-colors duration-300 ${active === i ? "text-[var(--color-cyan)]" : "text-[var(--color-text-dim)]"}`}
-                />
+                <s.icon size={18} weight={active === i ? "fill" : "regular"} className={`transition-colors duration-300 ${active === i ? "text-cyan-600" : "text-slate-300"}`} />
               </button>
             ))}
           </div>
 
-          {/* Right - Step content */}
+          {/* Step content */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -111,22 +101,20 @@ export function Process() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-8 lg:p-12"
+                className="rounded-2xl border border-slate-200 bg-white p-8 lg:p-12 shadow-sm"
               >
-                {/* Duration tag */}
-                <div className="inline-flex items-center rounded-full border border-[var(--color-cyan)]/20 bg-[var(--color-cyan)]/5 px-3 py-1 text-xs font-bold text-[var(--color-cyan)] mb-6">
+                <div className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-bold text-cyan-700 mb-6">
                   {step.duration}
                 </div>
 
-                <h3 className="text-2xl lg:text-3xl font-black tracking-tight text-white mb-4">
+                <h3 className="text-2xl lg:text-3xl font-black tracking-tight text-slate-900 mb-4">
                   {step.title}
                 </h3>
 
-                <p className="text-base leading-relaxed text-[var(--color-text-muted)] mb-10 max-w-lg">
+                <p className="text-base leading-relaxed text-slate-500 mb-10 max-w-lg">
                   {step.description}
                 </p>
 
-                {/* Features grid */}
                 <div className="grid grid-cols-2 gap-4">
                   {step.features.map((f, i) => (
                     <motion.div
@@ -136,8 +124,8 @@ export function Process() {
                       transition={{ duration: 0.3, delay: i * 0.08 }}
                       className="flex items-center gap-3"
                     >
-                      <div className="h-1.5 w-1.5 rounded-full bg-[var(--color-cyan)]" />
-                      <span className="text-sm font-medium text-[var(--color-text)]">{f}</span>
+                      <div className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+                      <span className="text-sm font-medium text-slate-700">{f}</span>
                     </motion.div>
                   ))}
                 </div>

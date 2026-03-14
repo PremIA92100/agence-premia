@@ -7,36 +7,36 @@ import { CheckCircle, ArrowRight, CaretDown } from "@phosphor-icons/react";
 
 const faqs = [
   {
-    question: "Combien co\u00fbte un projet ?",
-    answer: "Site vitrine d\u00e8s 2 000\u20ac, application m\u00e9tier entre 5 000\u20ac et 15 000\u20ac, automatisation IA \u00e0 partir de 1 500\u20ac. Devis gratuit et transparent en 48h.",
+    question: "Combien coûte un projet ?",
+    answer: "Site vitrine dès 2 000€, application métier entre 5 000€ et 15 000€, automatisation IA à partir de 1 500€. Devis gratuit et transparent en 48h.",
   },
   {
     question: "En combien de temps ?",
-    answer: "Site web : 2 \u00e0 4 semaines. Application : 4 \u00e0 8 semaines. Automatisation : 1 \u00e0 2 semaines. On va vite parce qu\u2019on utilise les bons outils.",
+    answer: "Site web : 2 à 4 semaines. Application : 4 à 8 semaines. Automatisation : 1 à 2 semaines. On va vite parce qu'on utilise les bons outils.",
   },
   {
-    question: "Je n\u2019y connais rien en tech ?",
-    answer: "C\u2019est exactement pour \u00e7a qu\u2019on existe. On traduit vos besoins business en solutions techniques. Z\u00e9ro jargon. Et on vous forme pour que vous soyez autonome.",
+    question: "Je n'y connais rien en tech ?",
+    answer: "C'est exactement pour ça qu'on existe. On traduit vos besoins business en solutions techniques. Zéro jargon. Et on vous forme pour que vous soyez autonome.",
   },
   {
-    question: "Qu\u2019est-ce qui vous diff\u00e9rencie ?",
-    answer: "On comprend votre business, on int\u00e8gre l\u2019IA nativement, et on livre des produits que vous pouvez faire \u00e9voluer seul. Pas de d\u00e9pendance.",
+    question: "Qu'est-ce qui vous différencie ?",
+    answer: "On comprend votre business, on intègre l'IA nativement, et on livre des produits que vous pouvez faire évoluer seul. Pas de dépendance.",
   },
   {
-    question: "C\u2019est quoi un agent IA ?",
-    answer: "Un assistant intelligent 24/7 qui r\u00e9pond aux clients, qualifie des prospects, g\u00e8re des t\u00e2ches r\u00e9p\u00e9titives. Tout ce que vous faites manuellement, en mieux et sans pause.",
+    question: "C'est quoi un agent IA ?",
+    answer: "Un assistant intelligent 24/7 qui répond aux clients, qualifie des prospects, gère des tâches répétitives. Tout ce que vous faites manuellement, en mieux et sans pause.",
   },
 ];
 
 function FAQItem({ question, answer, isOpen, onClick }: { question: string; answer: string; isOpen: boolean; onClick: () => void }) {
   return (
-    <div className="border-b border-[var(--color-border)] last:border-0">
+    <div className="border-b border-slate-100 last:border-0">
       <button onClick={onClick} className="flex w-full items-center justify-between py-5 text-left group cursor-pointer">
-        <span className={`text-sm font-semibold pr-6 transition-colors duration-200 ${isOpen ? "text-[var(--color-cyan)]" : "text-white group-hover:text-[var(--color-text)]"}`}>
+        <span className={`text-sm font-semibold pr-6 transition-colors duration-200 ${isOpen ? "text-cyan-700" : "text-slate-900 group-hover:text-slate-700"}`}>
           {question}
         </span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="flex-shrink-0">
-          <CaretDown size={16} weight="bold" className={`transition-colors duration-200 ${isOpen ? "text-[var(--color-cyan)]" : "text-[var(--color-text-dim)]"}`} />
+          <CaretDown size={16} weight="bold" className={`transition-colors duration-200 ${isOpen ? "text-cyan-600" : "text-slate-300"}`} />
         </motion.div>
       </button>
       <AnimatePresence>
@@ -48,9 +48,7 @@ function FAQItem({ question, answer, isOpen, onClick }: { question: string; answ
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm leading-relaxed text-[var(--color-text-muted)] pr-12">
-              {answer}
-            </p>
+            <p className="pb-5 text-sm leading-relaxed text-slate-500 pr-12">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -89,125 +87,74 @@ export function Contact() {
     }
   };
 
-  return (
-    <section id="contact" className="relative py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[var(--color-bg-elevated)]" />
-      <div className="absolute inset-0 bg-dots" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-cyan)]/20 to-transparent" />
+  const inputClass = "w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 placeholder-slate-300 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 focus:bg-white outline-none transition-all duration-200";
 
-      {/* Glow */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(0,212,255,0.05)_0%,transparent_70%)]" />
+  return (
+    <section id="contact" className="relative py-32 bg-slate-50 overflow-hidden">
+      <div className="absolute inset-0 bg-dots" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <SectionReveal className="mb-16">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-cyan)] mb-4">Contact</p>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-[1.1]">
-            Un projet&nbsp;?<br />
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-600 mb-4">Contact</p>
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
+            Un projet ?<br />
             <span className="text-gradient-cyan">Parlons-en.</span>
           </h2>
-          <p className="mt-6 text-lg text-[var(--color-text-muted)] max-w-md">
-            L&apos;audit est gratuit. Le devis aussi. R&eacute;ponse en 24h max, directement par le fondateur.
+          <p className="mt-6 text-lg text-slate-500 max-w-md">
+            L&apos;audit est gratuit. Le devis aussi. Réponse en 24h max, directement par le fondateur.
           </p>
         </SectionReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left - Form */}
+          {/* Form */}
           <SectionReveal direction="left">
-            <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-8 sm:p-10">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm">
               {status === "sent" ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
-                  <div className="mx-auto mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                    <CheckCircle size={28} weight="fill" className="text-emerald-400" />
+                  <div className="mx-auto mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
+                    <CheckCircle size={28} weight="fill" className="text-emerald-500" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Message envoy&eacute;</h3>
-                  <p className="text-sm text-[var(--color-text-muted)]">On revient vers vous en moins de 24h.</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Message envoyé !</h3>
+                  <p className="text-sm text-slate-500">On revient vers vous en moins de 24h.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-[var(--color-text-dim)] uppercase tracking-wider mb-2">
-                        Pr&eacute;nom & Nom *
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-3 text-sm text-white placeholder-[var(--color-text-dim)] focus:border-[var(--color-cyan)]/50 focus:ring-1 focus:ring-[var(--color-cyan)]/30 outline-none transition-all duration-200"
-                        placeholder="Jean Dupont"
-                      />
+                      <label htmlFor="name" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Prénom & Nom *</label>
+                      <input id="name" type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={inputClass} placeholder="Jean Dupont" />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-xs font-semibold text-[var(--color-text-dim)] uppercase tracking-wider mb-2">
-                        Soci&eacute;t&eacute;
-                      </label>
-                      <input
-                        id="company"
-                        type="text"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-3 text-sm text-white placeholder-[var(--color-text-dim)] focus:border-[var(--color-cyan)]/50 focus:ring-1 focus:ring-[var(--color-cyan)]/30 outline-none transition-all duration-200"
-                        placeholder="Ma Soci\u00e9t\u00e9"
-                      />
+                      <label htmlFor="company" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Société</label>
+                      <input id="company" type="text" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} className={inputClass} placeholder="Ma Société" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-[var(--color-text-dim)] uppercase tracking-wider mb-2">
-                        Email *
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-3 text-sm text-white placeholder-[var(--color-text-dim)] focus:border-[var(--color-cyan)]/50 focus:ring-1 focus:ring-[var(--color-cyan)]/30 outline-none transition-all duration-200"
-                        placeholder="jean@example.com"
-                      />
+                      <label htmlFor="email" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Email *</label>
+                      <input id="email" type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputClass} placeholder="jean@example.com" />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-[var(--color-text-dim)] uppercase tracking-wider mb-2">
-                        T&eacute;l&eacute;phone
-                      </label>
-                      <input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-3 text-sm text-white placeholder-[var(--color-text-dim)] focus:border-[var(--color-cyan)]/50 focus:ring-1 focus:ring-[var(--color-cyan)]/30 outline-none transition-all duration-200"
-                        placeholder="06 12 34 56 78"
-                      />
+                      <label htmlFor="phone" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Téléphone</label>
+                      <input id="phone" type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={inputClass} placeholder="06 12 34 56 78" />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-xs font-semibold text-[var(--color-text-dim)] uppercase tracking-wider mb-2">
-                      Votre projet *
-                    </label>
-                    <textarea
-                      id="message"
-                      required
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-3 text-sm text-white placeholder-[var(--color-text-dim)] focus:border-[var(--color-cyan)]/50 focus:ring-1 focus:ring-[var(--color-cyan)]/30 outline-none transition-all duration-200 resize-none"
-                      placeholder="D\u00e9crivez votre projet, vos objectifs..."
-                    />
+                    <label htmlFor="message" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Votre projet *</label>
+                    <textarea id="message" required rows={4} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${inputClass} resize-none`} placeholder="Décrivez votre projet, vos objectifs..." />
                   </div>
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--color-cyan)] px-8 py-4 text-sm font-bold text-[var(--color-bg)] shadow-[0_0_30px_rgba(0,212,255,0.2)] hover:shadow-[0_0_40px_rgba(0,212,255,0.35)] hover:scale-[1.02] active:scale-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                    className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-slate-900/10 hover:shadow-slate-900/20 hover:scale-[1.02] active:scale-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   >
                     {status === "sending" ? (
                       <>
-                        <div className="h-4 w-4 border-2 border-[var(--color-bg)]/30 border-t-[var(--color-bg)] rounded-full animate-spin" />
+                        <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         Envoi en cours...
                       </>
                     ) : (
@@ -219,55 +166,37 @@ export function Contact() {
                   </button>
 
                   {status === "error" && (
-                    <p className="text-sm text-red-400 text-center">
-                      Une erreur est survenue. Essayez directement par email.
-                    </p>
+                    <p className="text-sm text-red-500 text-center">Une erreur est survenue. Essayez directement par email.</p>
                   )}
                 </form>
               )}
             </div>
           </SectionReveal>
 
-          {/* Right - FAQ + Trust */}
+          {/* FAQ + Trust */}
           <div className="space-y-8">
             <SectionReveal direction="right">
-              {/* Trust signals */}
               <div className="space-y-3 mb-10">
-                {[
-                  "R\u00e9ponse en moins de 24h",
-                  "Devis gratuit et sans engagement",
-                  "Audit technique offert",
-                ].map((item) => (
+                {["Réponse en moins de 24h", "Devis gratuit et sans engagement", "Audit technique offert"].map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <CheckCircle size={16} weight="fill" className="text-emerald-400 flex-shrink-0" />
-                    <span className="text-sm text-[var(--color-text-muted)]">{item}</span>
+                    <CheckCircle size={16} weight="fill" className="text-emerald-500 flex-shrink-0" />
+                    <span className="text-sm text-slate-600">{item}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Email */}
-              <div className="mb-10 pb-8 border-b border-[var(--color-border)]">
-                <p className="text-xs text-[var(--color-text-dim)] mb-1 uppercase tracking-wider font-semibold">&Eacute;crivez-nous directement</p>
-                <a
-                  href="mailto:contact@agence-premia.fr"
-                  className="text-base font-bold text-white hover:text-[var(--color-cyan)] transition-colors duration-200"
-                >
+              <div className="mb-10 pb-8 border-b border-slate-200">
+                <p className="text-xs text-slate-400 mb-1 uppercase tracking-wider font-semibold">Écrivez-nous directement</p>
+                <a href="mailto:contact@agence-premia.fr" className="text-base font-bold text-slate-900 hover:text-cyan-700 transition-colors duration-200">
                   contact@agence-premia.fr
                 </a>
               </div>
 
-              {/* FAQ */}
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-dim)] mb-6">Questions fr&eacute;quentes</h3>
-                <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Questions fréquentes</h3>
+                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                   {faqs.map((faq, i) => (
-                    <FAQItem
-                      key={i}
-                      question={faq.question}
-                      answer={faq.answer}
-                      isOpen={openFaq === i}
-                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    />
+                    <FAQItem key={i} question={faq.question} answer={faq.answer} isOpen={openFaq === i} onClick={() => setOpenFaq(openFaq === i ? null : i)} />
                   ))}
                 </div>
               </div>
