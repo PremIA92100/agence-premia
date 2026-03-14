@@ -42,7 +42,7 @@ export function Footer() {
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm mb-8">
               Agence digitale spécialisée en IA et automatisation.
-              On construit l&apos;infrastructure qui fait tourner votre business.
+              Nous construisons l&apos;infrastructure qui fait tourner votre business.
             </p>
             <div className="flex items-center gap-3">
               {socials.map((social) => (

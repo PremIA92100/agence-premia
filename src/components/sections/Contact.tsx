@@ -12,15 +12,15 @@ const faqs = [
   },
   {
     question: "En combien de temps ?",
-    answer: "Site web : 2 à 4 semaines. Application : 4 à 8 semaines. Automatisation : 1 à 2 semaines. On va vite parce qu'on utilise les bons outils.",
+    answer: "Site web : 2 à 4 semaines. Application : 4 à 8 semaines. Automatisation : 1 à 2 semaines. Nous allons vite parce que nous utilisons les bons outils.",
   },
   {
     question: "Je n'y connais rien en tech ?",
-    answer: "C'est exactement pour ça qu'on existe. On traduit vos besoins business en solutions techniques. Zéro jargon. Et on vous forme pour que vous soyez autonome.",
+    answer: "C'est exactement pour ça que nous existons. Nous traduisons vos besoins business en solutions techniques. Zéro jargon. Et nous vous formons pour que vous soyez autonome.",
   },
   {
     question: "Qu'est-ce qui vous différencie ?",
-    answer: "On comprend votre business, on intègre l'IA nativement, et on livre des produits que vous pouvez faire évoluer seul. Pas de dépendance.",
+    answer: "Nous comprenons votre business, nous intégrons l'IA nativement, et nous livrons des produits que vous pouvez faire évoluer seul. Pas de dépendance.",
   },
   {
     question: "C'est quoi un agent IA ?",
@@ -31,8 +31,8 @@ const faqs = [
 function FAQItem({ question, answer, isOpen, onClick }: { question: string; answer: string; isOpen: boolean; onClick: () => void }) {
   return (
     <div className="border-b border-slate-100 last:border-0">
-      <button onClick={onClick} className="flex w-full items-center justify-between py-5 text-left group cursor-pointer">
-        <span className={`text-sm font-semibold pr-6 transition-colors duration-200 ${isOpen ? "text-cyan-700" : "text-slate-900 group-hover:text-slate-700"}`}>
+      <button onClick={onClick} className="flex w-full items-center justify-between py-4 sm:py-5 text-left group cursor-pointer">
+        <span className={`text-sm font-semibold pr-4 sm:pr-6 transition-colors duration-200 ${isOpen ? "text-cyan-700" : "text-slate-900 group-hover:text-slate-700"}`}>
           {question}
         </span>
         <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="flex-shrink-0">
@@ -48,7 +48,7 @@ function FAQItem({ question, answer, isOpen, onClick }: { question: string; answ
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm leading-relaxed text-slate-500 pr-12">{answer}</p>
+            <p className="pb-4 sm:pb-5 text-sm leading-relaxed text-slate-500 pr-8 sm:pr-12">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -90,37 +90,37 @@ export function Contact() {
   const inputClass = "w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 placeholder-slate-300 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 focus:bg-white outline-none transition-all duration-200";
 
   return (
-    <section id="contact" className="relative py-32 bg-slate-50 overflow-hidden">
+    <section id="contact" className="relative py-20 sm:py-32 bg-slate-50 overflow-hidden">
       <div className="absolute inset-0 bg-dots" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <SectionReveal className="mb-16">
+        <SectionReveal className="mb-10 sm:mb-16">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-600 mb-4">Contact</p>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
             Un projet ?<br />
             <span className="text-gradient-cyan">Parlons-en.</span>
           </h2>
-          <p className="mt-6 text-lg text-slate-500 max-w-md">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-slate-500 max-w-md">
             L&apos;audit est gratuit. Le devis aussi. Réponse en 24h max, directement par le fondateur.
           </p>
         </SectionReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Form */}
           <SectionReveal direction="left">
-            <div className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-sm">
               {status === "sent" ? (
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
+                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12 sm:py-16">
                   <div className="mx-auto mb-6 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
                     <CheckCircle size={28} weight="fill" className="text-emerald-500" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Message envoyé !</h3>
-                  <p className="text-sm text-slate-500">On revient vers vous en moins de 24h.</p>
+                  <p className="text-sm text-slate-500">Nous revenons vers vous en moins de 24h.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label htmlFor="name" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Prénom & Nom *</label>
                       <input id="name" type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={inputClass} placeholder="Jean Dupont" />
@@ -131,7 +131,7 @@ export function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label htmlFor="email" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Email *</label>
                       <input id="email" type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputClass} placeholder="jean@example.com" />
@@ -174,9 +174,9 @@ export function Contact() {
           </SectionReveal>
 
           {/* FAQ + Trust */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <SectionReveal direction="right">
-              <div className="space-y-3 mb-10">
+              <div className="space-y-3 mb-8 sm:mb-10">
                 {["Réponse en moins de 24h", "Devis gratuit et sans engagement", "Audit technique offert"].map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <CheckCircle size={16} weight="fill" className="text-emerald-500 flex-shrink-0" />
@@ -185,7 +185,7 @@ export function Contact() {
                 ))}
               </div>
 
-              <div className="mb-10 pb-8 border-b border-slate-200">
+              <div className="mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-slate-200">
                 <p className="text-xs text-slate-400 mb-1 uppercase tracking-wider font-semibold">Écrivez-nous directement</p>
                 <a href="mailto:contact@agence-premia.fr" className="text-base font-bold text-slate-900 hover:text-cyan-700 transition-colors duration-200">
                   contact@agence-premia.fr
@@ -193,8 +193,8 @@ export function Contact() {
               </div>
 
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Questions fréquentes</h3>
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 sm:mb-6">Questions fréquentes</h3>
+                <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm">
                   {faqs.map((faq, i) => (
                     <FAQItem key={i} question={faq.question} answer={faq.answer} isOpen={openFaq === i} onClick={() => setOpenFaq(openFaq === i ? null : i)} />
                   ))}

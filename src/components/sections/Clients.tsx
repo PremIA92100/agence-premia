@@ -36,21 +36,21 @@ const stats = [
 
 export function Clients() {
   return (
-    <section id="clients" className="relative py-32 bg-white overflow-hidden">
+    <section id="clients" className="relative py-20 sm:py-32 bg-white overflow-hidden">
       <div className="absolute inset-0 bg-grid-light" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <SectionReveal className="mb-20">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-600 mb-4">Clients</p>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
             Ils ont construit<br />
             <span className="text-slate-400">avec nous.</span>
           </h2>
         </SectionReveal>
 
         {/* Testimonials */}
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24" staggerDelay={0.15}>
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-16 sm:mb-24" staggerDelay={0.15}>
           {testimonials.map((t) => (
             <StaggerItem key={t.name}>
               <div className="group relative h-full flex flex-col p-8 rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
@@ -91,7 +91,7 @@ export function Clients() {
         </StaggerChildren>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-3 sm:gap-6">
           {stats.map((stat) => (
             <SectionReveal key={stat.label} className="text-center py-8 rounded-2xl border border-slate-200 bg-slate-50/50">
               <AnimatedCounter

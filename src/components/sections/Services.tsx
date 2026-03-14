@@ -101,20 +101,20 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
 export function Services() {
   return (
-    <section id="services" className="relative py-32 bg-white">
+    <section id="services" className="relative py-20 sm:py-32 bg-white">
       <div className="absolute inset-0 bg-grid-light" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         {/* Metrics */}
-        <StaggerChildren className="grid grid-cols-3 gap-6 mb-24" staggerDelay={0.1}>
+        <StaggerChildren className="grid grid-cols-3 gap-3 sm:gap-6 mb-16 sm:mb-24" staggerDelay={0.1}>
           {metrics.map((m) => (
             <StaggerItem key={m.label}>
-              <div className="text-center p-6 rounded-2xl border border-slate-200 bg-slate-50/50">
+              <div className="text-center p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/50">
                 <AnimatedCounter
                   value={m.value}
                   suffix={m.suffix}
-                  className="text-4xl sm:text-5xl font-black tracking-tighter"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter"
                   style={{ color: m.color }}
                 />
                 <div className="mt-2 text-sm font-semibold text-slate-400 uppercase tracking-wider">{m.label}</div>
@@ -125,8 +125,8 @@ export function Services() {
 
         {/* Header */}
         <SectionReveal className="mb-16">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-600 mb-4">Ce qu&apos;on fait</p>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-600 mb-4">Ce que nous faisons</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
             Trois expertises.<br />
             <span className="text-slate-400">Un seul objectif : le vôtre.</span>
           </h2>

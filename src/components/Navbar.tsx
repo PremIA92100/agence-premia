@@ -16,34 +16,26 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [pastHero, setPastHero] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      setPastHero(window.scrollY > window.innerHeight - 80);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const isDark = !pastHero;
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? pastHero
-              ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm"
-              : "bg-[var(--color-bg-dark)]/80 backdrop-blur-xl border-b border-white/5"
+            ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm"
             : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 lg:h-20 items-center justify-between">
             <Link href="/" className="group hover:opacity-90 transition-opacity duration-200">
-              <Logo variant={isDark ? "footer" : "navbar"} />
+              <Logo variant="navbar" />
             </Link>
 
             <div className="hidden md:flex items-center gap-10">
@@ -51,9 +43,7 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors duration-200 relative group ${
-                    isDark ? "text-slate-400 hover:text-white" : "text-slate-500 hover:text-slate-900"
-                  }`}
+                  className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors duration-200 relative group"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyan-500 group-hover:w-full transition-all duration-300" />
@@ -64,20 +54,14 @@ export function Navbar() {
             <div className="flex items-center gap-4">
               <a
                 href="#contact"
-                className={`hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all duration-300 ${
-                  isDark
-                    ? "border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20"
-                    : "bg-slate-900 text-white shadow-lg hover:shadow-slate-900/20 hover:scale-105"
-                }`}
+                className="hidden sm:inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-slate-900/10 hover:shadow-slate-900/20 hover:scale-105 active:scale-100 transition-all duration-300"
               >
                 Un projet ?
                 <ArrowRight size={12} weight="bold" />
               </a>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className={`md:hidden flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-200 ${
-                  isDark ? "border-white/10 hover:bg-white/5 text-white" : "border-slate-200 hover:bg-slate-50 text-slate-900"
-                }`}
+                className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-900 transition-all duration-200"
               >
                 {mobileOpen ? <X size={18} weight="bold" /> : <List size={18} weight="bold" />}
               </button>
@@ -114,7 +98,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-4 text-lg font-bold text-white"
               >
-                Lancer mon projet
+                Lancer notre projet
                 <ArrowRight size={18} weight="bold" />
               </motion.a>
             </div>
