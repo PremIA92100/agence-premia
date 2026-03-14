@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://agence-premia.fr"),
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
     apple: "/icon-512.png",
   },
 };
